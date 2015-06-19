@@ -37,8 +37,8 @@ var LoginViewModel = function(parent){
 
     self.getApiToken = function(thirdParty, userId, oauthToken, callback){
 
-        //TODO: change ip to PaaS ip service in the cloud
-        var url = 'http://192.168.0.15:8000/api/login?';
+        //TODO: change ip to local IP if needed for testing
+        var url = 'http://unabsecuredapi-mreyesexamples.rhcloud.com/api/login?';
         url = url + 'thirdparty=' + thirdParty + '&';
         url = url + 'userid=' + userId + '&';
         url = url + 'accesstoken=' + oauthToken;

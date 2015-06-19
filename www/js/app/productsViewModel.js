@@ -16,8 +16,9 @@ var ProductsViewModel = function(parent){
             }
 
             console.log('API token to send: ' + token);
-            //TODO: change ip to PaaS ip service in the cloud
-            var url = 'http://192.168.0.15:8000/api/products';
+            //TODO: change ip to local IP if needed for testing
+            var url = 'http://unabsecuredapi-mreyesexamples.rhcloud.com/api/products';
+            
             $.ajax({
 
                 url: 	url,
