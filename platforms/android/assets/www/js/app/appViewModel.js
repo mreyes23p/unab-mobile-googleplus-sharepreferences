@@ -2,6 +2,9 @@ var AppViewModel = function(){
 
     var self = this;
     
+    //the devicePlatform sets the strategy for TokenStore 
+    self.tokenStore = new TokenStore();
+    
     self.loginVM = ko.observable(new LoginViewModel(self));
     self.productsVM = ko.observable(new ProductsViewModel(self));
     

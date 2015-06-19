@@ -35,6 +35,14 @@
                         {
                             "xml": "<access origin=\"https://accounts.google.com/*\" />",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Sharedpreferences\"><param name=\"android-package\" value=\"in.edelworks.sharedpreferences.Sharedpreferences\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Device\"><param name=\"android-package\" value=\"org.apache.cordova.device.Device\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -44,6 +52,12 @@
     "installed_plugins": {
         "nl.x-services.plugins.googleplus": {
             "PACKAGE_NAME": "io.cordova.hellocordova"
+        },
+        "in.edelworks.sharedpreferences": {
+            "PACKAGE_NAME": "com.unab.mobile.googleplus"
+        },
+        "org.apache.cordova.device": {
+            "PACKAGE_NAME": "com.unab.mobile.googleplus"
         }
     },
     "dependent_plugins": {

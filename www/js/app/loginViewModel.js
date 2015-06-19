@@ -16,7 +16,7 @@ var LoginViewModel = function(parent){
                 document.querySelector("#userPhoto").style.visibility = 'visible';
                 document.querySelector("#userName").innerHTML = "Hola, " + obj.displayName;
                 console.log(obj);
-                self.getApiToken('google', obj.oauthToken, function(error){
+                self.getApiToken('google', obj.userId, obj.oauthToken, function(error){
                     if (error){
                         console.error(error);
                         alert('Hubo un problema al autenticar');
@@ -35,23 +35,28 @@ var LoginViewModel = function(parent){
         );
     };
 
-    self.getApiToken = function(thirdParty, oauthToken, callback){
+    self.getApiToken = function(thirdParty, userId, oauthToken, callback){
 
-        var url = 'http://unabsecuredapi-mreyesexamples.rhcloud.com/api/login?';
-        url = url + 'who=' + thirdParty + '&';
+        //TODO: change ip to PaaS ip service in the cloud
+        var url = 'http://192.168.0.15:8000/api/login?';
+        url = url + 'thirdparty=' + thirdParty + '&';
+        url = url + 'userid=' + userId + '&';
         url = url + 'accesstoken=' + oauthToken;
 
         $.ajax({
 
-            url: url
+            url: url,
             type: 	'GET',
             contentType: 'application/json; charset=utf-8',
             success: function(data){
                 console.log(data);
-                if (data && data.jwtoken){
-                    return callback(data.jwtoken);
-                }
-                return callback({error: 'NO_JWT_TOKEN_RECEIVED'});
+                if (data && data.token){
+                    self.saveTokenInLocalDevice(data.token, function(error){
+                        return callback(error);                        
+                    });                    
+                } else {
+                    return callback({error: 'NO_JWT_TOKEN_RECEIVED'});
+                }                
             },
             error: function(xhr, type){
                 console.log('error');
@@ -59,6 +64,16 @@ var LoginViewModel = function(parent){
             }
 
         });
+    };
+    
+    self.saveTokenInLocalDevice = function(token, callback){
+        
+        var tokenStore = parent.tokenStore;
+        
+        tokenStore.saveToken(token, function(error){
+            callback(error);
+        });
+        
     };
 
 };

@@ -35,6 +35,7 @@ var app = {
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
         var viewModel = new AppViewModel();
+        viewModel.tokenStore.setStrategy(device.platform);
         ko.applyBindings(viewModel, $('#content-wrapper')[0]);
     },
     // Update DOM on a Received Event

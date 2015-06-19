@@ -6,6 +6,12 @@
         <param name="onload" value="true" />
     </feature>
     <access origin="https://accounts.google.com/*" />
+    <feature name="Sharedpreferences">
+        <param name="android-package" value="in.edelworks.sharedpreferences.Sharedpreferences" />
+    </feature>
+    <feature name="Device">
+        <param name="android-package" value="org.apache.cordova.device.Device" />
+    </feature>
     <name>Unab Mobile Example</name>
     <description>
         Ejemplo de uso de shared preferences para almacenar jsonwebtokens y uso de google plus
