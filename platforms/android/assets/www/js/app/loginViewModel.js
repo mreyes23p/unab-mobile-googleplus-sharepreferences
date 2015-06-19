@@ -13,8 +13,9 @@ var LoginViewModel = function(parent){
                 document.querySelector("#userPhoto").src = obj.imageUrl;
                 document.querySelector("#userPhoto").style.visibility = 'visible';
                 document.querySelector("#userName").innerHTML = "Hola, " + obj.displayName;
-                parent.showProductsSection();
                 console.log(obj);
+                parent.showProductsSection();
+                
             },
             function (msg) {
                 alert('error:' + msg);

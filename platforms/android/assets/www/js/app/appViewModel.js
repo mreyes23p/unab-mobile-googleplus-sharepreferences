@@ -10,6 +10,7 @@ var AppViewModel = function(){
     
     self.showProductsSection = function(){
         self.hideAll();
+        self.productsVM().getProducts();
         self.isProductsSectionVisible(true);
     };
     

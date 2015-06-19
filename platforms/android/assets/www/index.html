@@ -51,23 +51,14 @@
                     <br/><br/>
                     <div class="row">
                         <h2>Listado de Productos</h2><br>
-                        <ul class="table-view">
+                        <ul class="table-view" data-bind="foreach: products">
                             <li class="table-view-cell">
                                 <a class="navigate-right">
-                                    Item 1
-                                </a>
-                            </li>
-                            <li class="table-view-cell">
-                                <a class="navigate-right">
-                                    Item 2
-                                </a>
-                            </li>
-                            <li class="table-view-cell">
-                                <a class="navigate-right">
-                                    Item 3
+                                    <span data-bind="text: name + ' ($' + price + ')'"></span>
                                 </a>
                             </li>
                         </ul>
+                        <span data-bind="visible: products().length === 0">No hay productos</span>
                     </div>
                 </div>
                 <nav class="bar bar-tab">

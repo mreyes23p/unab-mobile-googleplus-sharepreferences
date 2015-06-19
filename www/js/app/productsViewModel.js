@@ -2,14 +2,17 @@ var ProductsViewModel = function(parent){
 
     var self = this;
     
-    var self.products = ko.observableArray();
+    self.products = ko.observableArray();
     
     self.getProducts = function(){
     
         $.ajax({
 
-            url: 	'http://unabrestmobile-mreyesexamples.rhcloud.com/api/products',
+            url: 	'http://unabsecuredapi-mreyesexamples.rhcloud.com/api/products',
             type: 	'GET',
+            beforeSend: function (request){
+                request.setRequestHeader('x-access-token', 'JWTOKEN');
+            },
             dataType: 'json',
             contentType: 'application/json; charset=utf-8',
             success: function(data){
